@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- Design tokens as CSS custom properties (Section 3) ---- */
+:root {
+  --ink-deep: #14213d;
+  --ink-mid: #1d3557;
+  --paper: #ece6d6;
+  --brass: #b08d57;
+  --coral: #e76f51;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-paper text-text-primary font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Visible keyboard focus on every interactive element */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-coral outline-dashed;
+  }
+
+  ::selection {
+    background-color: var(--brass);
+    color: var(--ink-deep);
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Consistent link underline for inline text */
+  a {
+    @apply text-text-primary underline decoration-brass/60 underline-offset-2 transition-colors;
+  }
+  a:hover {
+    @apply decoration-brass;
+  }
+}
