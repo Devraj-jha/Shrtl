@@ -22,7 +22,7 @@ Commit a toggle in these checkboxes alongside the code that completed each task.
 - [x] Auth config with env placeholders (GITHUB_CLIENT_ID/SECRET, AUTH_SECRET)
 - [x] `/login` page
 - [x] Protect `/dashboard/*` behind auth
-- [ ] Register session user + sign-out in the dashboard shell (Phase 4)
+- [x] Register session user + sign-out in the dashboard shell (Phase 4)
 
 ## Phase 4: Core CRUD
 - [x] Zod schemas for create/list/edit/delete
@@ -43,17 +43,20 @@ Commit a toggle in these checkboxes alongside the code that completed each task.
 - [x] Route view page with Recharts (line chart, referrers, countries, devices)
 - [x] CSV export for Pro plan
 
-## Phase 7: Billing (Stripe)
+## Phase 7: Billing (Stripe) — DEFERRED
 - [ ] Stripe env placeholders + client
 - [ ] `POST /api/stripe/checkout` — Checkout session (Free/Pro)
 - [ ] `POST /api/stripe/webhook` — subscription lifecycle → `User.plan`
 - [ ] Customer Portal link in `/dashboard/settings`
 - [ ] Plan gating in UI + API
 
+> Deferred on user request — focus shifted to core loop + design/UI first.
+> Plan limits still enforced in API and visible in the dashboard; payment flow is the only part skipped.
+
 ## Phase 8: Marketing pages
-- [ ] Landing page with Section 3 design direction + one animated hero moment
-- [ ] `/pricing` two-tier comparison
-- [ ] Footer
+- [x] Landing page with Section 3 design direction + one animated hero moment
+- [x] `/pricing` two-tier comparison
+- [x] Footer
 
 ## Phase 9: Polish & self-critique
 - [ ] Responsive down to 375px
@@ -70,6 +73,5 @@ Commit a toggle in these checkboxes alongside the code that completed each task.
 - `AUTH_SECRET`
 - `GITHUB_CLIENT_ID`, `GITHUB_SECRET`
 - `AUTH_EMAIL_SERVER` (SMTP for magic link; `AUTH_EMAIL_FROM`)
-- `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`
 - `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`
 - `APP_URL` (base URL for redirects / emails)
