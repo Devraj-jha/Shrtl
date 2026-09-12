@@ -5,8 +5,11 @@ import { apiError, safeHandler } from "@/lib/api";
 import { createLinkSchema } from "@/lib/validations/links";
 import { planLimits } from "@/lib/plans";
 import { generateSlug } from "@/lib/utils";
+import { rateLimit } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
+
+const CREATE_LIMIT_PER_USER_PER_MIN = 20;
 
 async function activeLinkCount(userId: string) {
   return prisma.link.count({
@@ -23,6 +26,11 @@ export async function POST(req: Request) {
   return safeHandler(async () => {
     const user = await getCurrentUser();
     if (!user) return apiError(401, "UNAUTHORIZED", "Sign in to plot a waypoint.");
+
+    const rl = await rateLimit(`create:${user.id}`, CREATE_LIMIT_PER_USER_PER_MIN);
+    if (!rl.allowed) {
+      return apiError(429, "RATE_LIMIT", "You're plotting too fast. Wait a moment and try again.");
+    }
 
     const body = await req.json().catch(() => ({}));
     const parsed = createLinkSchema.safeParse(body);
