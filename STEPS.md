@@ -1,0 +1,75 @@
+# STEPS.md — Waypoint build tracker
+
+Single source of truth for this build. Resume from the first unchecked task on any interruption.
+Commit a toggle in these checkboxes alongside the code that completed each task. Do not batch-check.
+
+---
+
+## Phase 1: Scaffold
+- [ ] Init Next.js 15 + TypeScript project
+- [ ] Configure Tailwind with custom design tokens from Section 3
+- [ ] Set up ESLint / Prettier
+- [ ] Init local Postgres (dev) + get DATABASE_URL wired into `.env` / Prisma
+
+## Phase 2: Database (Prisma)
+- [ ] Prisma schema per Section 4
+- [ ] Run first migration against local Postgres
+- [ ] Seed script with demo waypoints + user
+- [ ] Prisma client singleton; committed
+
+## Phase 3: Auth (Auth.js v5)
+- [ ] Install NextAuth, Prisma adapter, email + GitHub providers
+- [ ] Auth config with env placeholders (GITHUB_CLIENT_ID/SECRET, AUTH_SECRET)
+- [ ] `/login` page
+- [ ] Protect `/dashboard/*` behind auth
+- [ ] Route view: session user, sign out
+
+## Phase 4: Core CRUD
+- [ ] Zod schemas for create/list/edit/delete
+- [ ] `POST /api/links` with plan-limit enforcement
+- [ ] `GET /api/links`
+- [ ] `PATCH /api/links/[id]` (edit title / archive)
+- [ ] `DELETE /api/links/[id]`
+- [ ] Dashboard page: the "chart" layout (Section 3)
+- [ ] Create waypoint form with copy button + live click count
+
+## Phase 5: Redirect service
+- [ ] `GET /r/[slug]` route — Redis-cached slug lookup
+- [ ] Click logging (referrer, geo from IP, device from UA)
+- [ ] Upstash rate limit on `/r/[slug]` and `POST /api/links`
+
+## Phase 6: Analytics
+- [ ] `GET /api/links/[id]/analytics` (clicks over time + breakdowns)
+- [ ] Route view page with Recharts (line chart, referrers, countries, devices)
+- [ ] CSV export for Pro plan
+
+## Phase 7: Billing (Stripe)
+- [ ] Stripe env placeholders + client
+- [ ] `POST /api/stripe/checkout` — Checkout session (Free/Pro)
+- [ ] `POST /api/stripe/webhook` — subscription lifecycle → `User.plan`
+- [ ] Customer Portal link in `/dashboard/settings`
+- [ ] Plan gating in UI + API
+
+## Phase 8: Marketing pages
+- [ ] Landing page with Section 3 design direction + one animated hero moment
+- [ ] `/pricing` two-tier comparison
+- [ ] Footer
+
+## Phase 9: Polish & self-critique
+- [ ] Responsive down to 375px
+- [ ] Keyboard focus states on all interactive elements
+- [ ] Respect `prefers-reduced-motion`
+- [ ] No secrets in client code
+- [ ] Final pass: cut generic-default tells (Section 3 self-critique)
+- [ ] Final push
+
+---
+
+### Env placeholders (fill `.env.local` as you test)
+- `DATABASE_URL` — local Postgres now; swap to Neon/Supabase later (one-line change)
+- `AUTH_SECRET`
+- `GITHUB_CLIENT_ID`, `GITHUB_SECRET`
+- `AUTH_EMAIL_SERVER` (SMTP for magic link; `AUTH_EMAIL_FROM`)
+- `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`
+- `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`
+- `APP_URL` (base URL for redirects / emails)
