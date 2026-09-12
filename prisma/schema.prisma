@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Plan {
+  FREE
+  PRO
+}
+
+model User {
+  id               String   @id @default(cuid())
+  email            String   @unique
+  name             String?
+  stripeCustomerId String?  @unique
+  plan             Plan     @default(FREE)
+  createdAt        DateTime @default(now())
+  links            Link[]
+}
+
+model Link {
+  id         String   @id @default(cuid())
+  slug       String   @unique
+  longUrl    String
+  title      String?
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  createdAt  DateTime @default(now())
+  expiresAt  DateTime?
+  archivedAt DateTime?
+  clicks     Click[]
+
+  @@index([userId, createdAt])
+  @@index([userId, archivedAt])
+}
+
+model Click {
+  id        String   @id @default(cuid())
+  linkId    String
+  link      Link     @relation(fields: [linkId], references: [id])
+  timestamp DateTime @default(now())
+  referrer  String?
+  country   String?
+  device    String?
+
+  @@index([linkId, timestamp])
+}
