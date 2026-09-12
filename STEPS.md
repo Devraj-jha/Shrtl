@@ -6,16 +6,16 @@ Commit a toggle in these checkboxes alongside the code that completed each task.
 ---
 
 ## Phase 1: Scaffold
-- [ ] Init Next.js 15 + TypeScript project
-- [ ] Configure Tailwind with custom design tokens from Section 3
-- [ ] Set up ESLint / Prettier
-- [ ] Init local Postgres (dev) + get DATABASE_URL wired into `.env` / Prisma
+- [x] Init Next.js 15 + TypeScript project
+- [x] Configure Tailwind with custom design tokens from Section 3
+- [x] Set up ESLint / Prettier
+- [x] Init local Postgres (dev) + get DATABASE_URL wired into `.env` / Prisma
 
 ## Phase 2: Database (Prisma)
-- [ ] Prisma schema per Section 4
-- [ ] Run first migration against local Postgres
-- [ ] Seed script with demo waypoints + user
-- [ ] Prisma client singleton; committed
+- [x] Prisma schema per Section 4
+- [x] Run first migration against local Postgres
+- [x] Seed script with demo waypoints + user
+- [x] Prisma client singleton; committed
 
 ## Phase 3: Auth (Auth.js v5)
 - [ ] Install NextAuth, Prisma adapter, email + GitHub providers
