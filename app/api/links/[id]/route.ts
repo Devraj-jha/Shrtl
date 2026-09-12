@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { getCurrentUser } from "@/lib/session";
 import { apiError, ApiError, safeHandler } from "@/lib/api";
 import { patchLinkSchema } from "@/lib/validations/links";
+import { invalidateSlug } from "@/lib/cache";
 
 export const runtime = "nodejs";
 
@@ -45,6 +46,10 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
       data.archivedAt = patch.archive ? new Date() : null;
     }
 
+    // Drop the cached slug when its visibility changes so a freshly archived
+    // waypoint stops resolving immediately.
+    if (patch.archive !== undefined) await invalidateSlug(existing.slug);
+
     const link = await prisma.link.update({
       where: { id },
       data,
@@ -68,8 +73,9 @@ export async function DELETE(_req: Request, { params }: { params: Promise<{ id: 
     if (!user) return apiError(401, "UNAUTHORIZED", "Sign in to edit your chart.");
     const { id } = await params;
 
-    await ownLink(id, user.id);
+    const link = await ownLink(id, user.id);
     await prisma.link.delete({ where: { id } });
+    await invalidateSlug(link.slug);
 
     return NextResponse.json({ ok: true });
   });
