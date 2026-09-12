@@ -39,9 +39,9 @@ Commit a toggle in these checkboxes alongside the code that completed each task.
 - [x] Upstash rate limit on `/r/[slug]` and `POST /api/links`
 
 ## Phase 6: Analytics
-- [ ] `GET /api/links/[id]/analytics` (clicks over time + breakdowns)
-- [ ] Route view page with Recharts (line chart, referrers, countries, devices)
-- [ ] CSV export for Pro plan
+- [x] `GET /api/links/[id]/analytics` (clicks over time + breakdowns)
+- [x] Route view page with Recharts (line chart, referrers, countries, devices)
+- [x] CSV export for Pro plan
 
 ## Phase 7: Billing (Stripe)
 - [ ] Stripe env placeholders + client
