@@ -18,11 +18,11 @@ Commit a toggle in these checkboxes alongside the code that completed each task.
 - [x] Prisma client singleton; committed
 
 ## Phase 3: Auth (Auth.js v5)
-- [ ] Install NextAuth, Prisma adapter, email + GitHub providers
-- [ ] Auth config with env placeholders (GITHUB_CLIENT_ID/SECRET, AUTH_SECRET)
-- [ ] `/login` page
-- [ ] Protect `/dashboard/*` behind auth
-- [ ] Route view: session user, sign out
+- [x] Install NextAuth, Prisma adapter, email + GitHub providers
+- [x] Auth config with env placeholders (GITHUB_CLIENT_ID/SECRET, AUTH_SECRET)
+- [x] `/login` page
+- [x] Protect `/dashboard/*` behind auth
+- [ ] Register session user + sign-out in the dashboard shell (Phase 4)
 
 ## Phase 4: Core CRUD
 - [ ] Zod schemas for create/list/edit/delete
