@@ -42,8 +42,8 @@ export default async function DashboardPage() {
         <div>
           <h1 className="font-display text-3xl font-semibold text-ink-deep">Your chart</h1>
           <p className="mt-1 text-sm text-text-muted">
-            {serialized.length} waypoint{serialized.length === 1 ? "" : "s"} plotted ·{" "}
-            {limits.customSlugs ? "Pro" : `Free · ${limits.maxActiveLinks} active max`}
+            {serialized.length} waypoint{serialized.length === 1 ? "" : "s"} plotted —{" "}
+            {limits.customSlugs ? "Pro course" : `Free course, ${limits.maxActiveLinks} active max`}
           </p>
         </div>
       </div>

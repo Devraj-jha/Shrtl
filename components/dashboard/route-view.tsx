@@ -201,7 +201,7 @@ function Breakdown({
               <div className="flex items-baseline justify-between gap-3">
                 <span className="truncate text-sm text-ink-deep">{r.value}</span>
                 <span className="shrink-0 font-mono text-xs text-text-muted">
-                  {r.count} <span className="text-text-faint">· {pct}%</span>
+                  {r.count} <span className="text-text-faint">— {pct}%</span>
                 </span>
               </div>
               <div className="mt-1 h-1.5 overflow-hidden rounded bg-grid-faint">

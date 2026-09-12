@@ -212,7 +212,7 @@ export default function Home() {
               Waypoint
             </span>
           </div>
-          <p className="font-mono text-xs">53°32′ N · a quieter route through every link</p>
+          <p className="font-mono text-xs">53°32′ N — a quieter route through every link</p>
           <p className="text-xs">charts drawn by hand, not by a template</p>
         </div>
       </footer>
