@@ -25,13 +25,13 @@ Commit a toggle in these checkboxes alongside the code that completed each task.
 - [ ] Register session user + sign-out in the dashboard shell (Phase 4)
 
 ## Phase 4: Core CRUD
-- [ ] Zod schemas for create/list/edit/delete
-- [ ] `POST /api/links` with plan-limit enforcement
-- [ ] `GET /api/links`
-- [ ] `PATCH /api/links/[id]` (edit title / archive)
-- [ ] `DELETE /api/links/[id]`
-- [ ] Dashboard page: the "chart" layout (Section 3)
-- [ ] Create waypoint form with copy button + live click count
+- [x] Zod schemas for create/list/edit/delete
+- [x] `POST /api/links` with plan-limit enforcement
+- [x] `GET /api/links`
+- [x] `PATCH /api/links/[id]` (edit title / archive)
+- [x] `DELETE /api/links/[id]`
+- [x] Dashboard page: the "chart" layout (Section 3)
+- [x] Create waypoint form with copy button + live click count
 
 ## Phase 5: Redirect service
 - [ ] `GET /r/[slug]` route — Redis-cached slug lookup
