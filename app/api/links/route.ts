@@ -47,7 +47,7 @@ export async function POST(req: Request) {
       return apiError(
         403,
         "PLAN_LIMIT",
-        "Custom slugs are a Pro feature. Upgrade to choose your own waypoint name."
+        "Custom slugs are a Pro feature. Use a random waypoint code for now."
       );
     }
 
@@ -58,7 +58,7 @@ export async function POST(req: Request) {
         return apiError(
           429,
           "PLAN_LIMIT",
-          `You've hit the Free limit of ${limits.maxActiveLinks} active waypoints. Archive one or upgrade to Pro.`
+          `You've hit the Free limit of ${limits.maxActiveLinks} active waypoints. Archive one to make room.`
         );
       }
     }
