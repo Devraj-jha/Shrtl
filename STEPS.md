@@ -34,9 +34,9 @@ Commit a toggle in these checkboxes alongside the code that completed each task.
 - [x] Create waypoint form with copy button + live click count
 
 ## Phase 5: Redirect service
-- [ ] `GET /r/[slug]` route — Redis-cached slug lookup
-- [ ] Click logging (referrer, geo from IP, device from UA)
-- [ ] Upstash rate limit on `/r/[slug]` and `POST /api/links`
+- [x] `GET /r/[slug]` route — Redis-cached slug lookup
+- [x] Click logging (referrer, geo from IP, device from UA)
+- [x] Upstash rate limit on `/r/[slug]` and `POST /api/links`
 
 ## Phase 6: Analytics
 - [ ] `GET /api/links/[id]/analytics` (clicks over time + breakdowns)
